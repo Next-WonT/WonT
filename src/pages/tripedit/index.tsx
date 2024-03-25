@@ -71,6 +71,7 @@ function TripEdit() {
             places: selectedPlaces,
             accommodations: selectedAccommodations,
             plan: selectedPlan,
+            trip_date: tripDates,
           },
         ]);
         if (error) {
@@ -78,6 +79,9 @@ function TripEdit() {
           console.log(error);
         } else {
           alert("일정이 저장되었습니다.");
+          resetRegionName();
+          resetTripDates();
+          router.reload();
         }
       }
     } catch (error) {

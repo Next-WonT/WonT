@@ -1,7 +1,7 @@
 import { AiOutlineHome } from "react-icons/ai";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { PiUserCircle } from "react-icons/pi";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 
 function HeaderMypage() {
   const router = useRouter();
@@ -12,10 +12,10 @@ function HeaderMypage() {
           <IoArrowBackCircleOutline size="30px" color="#363636" />
         </button>
         <div className="flex gap-3">
-          <button>
+          <button type="button" onClick={() => Router.push(`/main`)}>
             <AiOutlineHome size="28px" color="#363636" />
           </button>
-          <button>
+          <button type="button" onClick={() => Router.push(`/mypage`)}>
             <PiUserCircle size="30px" color="#363636" />
           </button>
         </div>

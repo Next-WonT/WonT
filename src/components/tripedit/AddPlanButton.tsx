@@ -9,8 +9,8 @@ interface AddPlanButtonProps {
   text?: string;
   place?: string;
   index: number;
-  placeIndex: number;
-  accommondationIndex: number;
+  placeIndex?: number | undefined;
+  accommondationIndex?: number | undefined;
   onDragStart?: (e: React.DragEvent) => void;
   onDragOver?: (e: React.DragEvent) => void;
   onDrop?: (e: React.DragEvent<Element>) => void;
@@ -42,12 +42,12 @@ function AddPlanButton({
 
   const handleRemove = (
     e: React.MouseEvent,
-    placeIndex: number,
-    accommondationIndex: number,
+    placeIndex: number | undefined,
+    accommondationIndex: number | undefined,
   ) => {
     e.stopPropagation();
 
-    if (text === "장소") {
+    if (text === "장소" && placeIndex) {
       const newSelectedPlaces = Array.from(selectedPlaces || []);
       if (
         newSelectedPlaces.length > placeIndex &&
@@ -59,7 +59,7 @@ function AddPlanButton({
       }
     }
 
-    if (text === "숙소") {
+    if (text === "숙소" && accommondationIndex) {
       const newSelectedPlaces = Array.from(selectedAccommodations || []);
       if (
         newSelectedPlaces.length > accommondationIndex &&

@@ -21,10 +21,6 @@ function TripEdit() {
   const [userSessionId, setUserSessionId] = useState<string | undefined>();
   const { selectedPlan, setSelectedPlan } = SelectedPlanStore();
   const router = useRouter();
-  console.log("selectedPlan", selectedPlan);
-  console.log("selectedPlaces", selectedPlaces);
-  console.log("selectedAccommodations", selectedAccommodations);
-
 
   useEffect(() => {
     const combinedData = selectedPlaces?.map((places, index) => {
@@ -80,6 +76,8 @@ function TripEdit() {
           console.log(error);
         } else {
           alert("일정이 저장되었습니다.");
+          resetRegionName();
+          resetTripDates();
         }
       }
     } catch (error) {
